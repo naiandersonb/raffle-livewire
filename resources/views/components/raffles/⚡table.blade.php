@@ -48,14 +48,22 @@ new class extends Component
                 <x-ui.table.cell>{{ $record->name }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->created_at->format('d/m/Y H:i') }}</x-ui.table.cell>
                 <x-ui.table.cell>
-                    <x-ui.modal.trigger id="edit-raffle">
-                        <x-ui.button @click="$dispatch('raffle:edit', {id: {{ $record->id }}})">
-                            Edit
-                        </x-ui.button>
-                    </x-ui.modal.trigger>
-                    {{-- <x-ui.button @click="$dispatch('open-modal', 'edit-raffle')">
-                        Edit
-                    </x-ui.button> --}}
+                    <div class="flex flex-row items-center gap-2">
+                        <x-ui.modal.trigger id="edit-raffle">
+                            <x-ui.button size="xs" variant="outline"
+                                @click="$dispatch('raffle:edit', {id: {{ $record->id }}})">
+                                Edit
+                            </x-ui.button>
+                        </x-ui.modal.trigger>
+
+                        <x-ui.modal.trigger id="destroy-raffle">
+                            <x-ui.button size="xs" color="red" variant="outline"
+                                @click="$dispatch('raffle:destroy', {id: {{ $record->id }}})">
+                                Delete
+                            </x-ui.button>
+                        </x-ui.modal.trigger>
+                    </div>
+
                 </x-ui.table.cell>
             </x-ui.table.row>
             @empty

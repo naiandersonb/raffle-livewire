@@ -23,7 +23,7 @@
     </x-ui.navbar>
     @endauth
 
-    <main class="p-5 mt-10 mx-auto max-w-xl">
+    <main class="p-5 mt-10 mx-auto max-w-4xl">
         {{ $slot }}
     </main>
 

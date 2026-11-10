@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('raffles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
     }
