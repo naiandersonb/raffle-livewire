@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         Model::unguard();
-        Gate::define('admin', fn (User $user) => $user->is_admin);
+        Gate::define('admin', fn(User $user) => $user->is_admin);
     }
 
     /**
@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         Password::defaults(
-            fn (): ?Password => app()->isProduction()
+            fn(): ?Password => app()->isProduction()
                 ? Password::min(12)
                     ->mixedCase()
                     ->letters()

@@ -12,5 +12,6 @@ new class extends Component
     <livewire:raffles.create />
     <livewire:raffles.edit />
     <livewire:raffles.destroy />
+    <livewire:raffles.publish />
     <livewire:raffles.table />
 </div>

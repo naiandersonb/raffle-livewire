@@ -48,7 +48,23 @@ new class extends Component
                 <x-ui.table.cell>{{ $record->name }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->created_at->format('d/m/Y H:i') }}</x-ui.table.cell>
                 <x-ui.table.cell>
-                    <div class="flex flex-row items-center gap-2">
+                    <div class="flex flex-row items-center justify-end gap-2">
+                        @unless($record->published_at)
+                        <x-ui.modal.trigger id="publish-raffle">
+                            <x-ui.button size="xs" variant="ghost"
+                                @click="$dispatch('raffle:publish', {id: {{ $record->id }}})">
+                                ✅ Publish
+                            </x-ui.button>
+                        </x-ui.modal.trigger>
+                        @else
+                        <x-ui.modal.trigger id="unpublish-raffle">
+                            <x-ui.button size="xs" variant="ghost"
+                                @click="$dispatch('raffle:unpublish', {id: {{ $record->id }}})">
+                                ⛔ Unpublish
+                            </x-ui.button>
+                        </x-ui.modal.trigger>
+                        @endunless
+
                         <x-ui.modal.trigger id="edit-raffle">
                             <x-ui.button size="xs" variant="outline"
                                 @click="$dispatch('raffle:edit', {id: {{ $record->id }}})">
