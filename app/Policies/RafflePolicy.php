@@ -8,8 +8,12 @@ use Illuminate\Auth\Access\Response;
 
 class RafflePolicy
 {
-    public function onlyPublished(User $user, Raffle $raffle): bool
+    public function onlyPublished(?User $user, Raffle $raffle): bool
     {
+        if ($user?->is_admin) {
+            return true;
+        }
+
         return filled($raffle->published_at);
     }
 }
