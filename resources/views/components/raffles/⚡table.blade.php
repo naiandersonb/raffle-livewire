@@ -47,7 +47,16 @@ new class extends Component
                 <x-ui.table.cell>{{ $record->id }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->name }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->created_at->format('d/m/Y H:i') }}</x-ui.table.cell>
-                <x-ui.table.cell>Ações</x-ui.table.cell>
+                <x-ui.table.cell>
+                    <x-ui.modal.trigger id="edit-raffle">
+                        <x-ui.button @click="$dispatch('raffle:edit', {id: {{ $record->id }}})">
+                            Edit
+                        </x-ui.button>
+                    </x-ui.modal.trigger>
+                    {{-- <x-ui.button @click="$dispatch('open-modal', 'edit-raffle')">
+                        Edit
+                    </x-ui.button> --}}
+                </x-ui.table.cell>
             </x-ui.table.row>
             @empty
             <x-ui.table.empty>No raffles found.</x-ui.table.empty>
