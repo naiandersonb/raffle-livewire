@@ -2,15 +2,17 @@
 
 use Livewire\Component;
 use App\Models\Raffle;
-use Livewire\Attributes\Computed;
+use Livewire\Attributes\{On,Computed};
 use Illuminate\Pagination\LengthAwarePaginator;
-use Livewire\Features\SupportPagination\HandlesPagination;
+use Livewire\WithPagination;
+
 
 new class extends Component
 {
-    use HandlesPagination;
+    use WithPagination;
 
     #[Computed()]
+    #[On('raffle:refresh')]
     public function records(): LengthAwarePaginator {
         return Raffle::query()->withCount('applicants')->latest()->paginate(7);
     }
@@ -19,11 +21,15 @@ new class extends Component
 
 <div>
 
-    <div x-data="{name: 'Bruno', open: false}">
-        <button @click="open = !open">toggle</button>
-        <div x-show="open">
-            <span x-text="name"></span>
-        </div>
+    <div class="flex flex-row items-center justify-end">
+        {{-- <x-ui.button size="md" @click="$dispatch('raffle:create')">
+            Create raffle
+        </x-ui.button> --}}
+        <x-ui.modal.trigger id="create-raffle">
+            <x-ui.button>
+                Open
+            </x-ui.button>
+        </x-ui.modal.trigger>
     </div>
 
     <x-ui.table>

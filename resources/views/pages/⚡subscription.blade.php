@@ -15,7 +15,7 @@ new class extends Component {
     #[Computed]
     public function participants()
     {
-        return $this->raffle->applicants;
+        return $this->raffle?->applicants ?? collect();
     }
 
     public function rules(): array
@@ -55,11 +55,13 @@ new class extends Component {
 ?>
 
 <div>
+    @if (isset($raffle))
     <div>
         <h1 class="text-2xl font-bold mb-4">
             Raffle App :: {{ $raffle->name }}
         </h1>
     </div>
+    @endif
 
     <form wire:submit="save" class="flex flex-col gap-4">
         <x-ui.input wire:model="email" placeholder="Enter your name..." />
