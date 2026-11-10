@@ -37,7 +37,8 @@ new class extends Component
             <x-ui.table.columns>
                 <x-ui.table.head>ID</x-ui.table.head>
                 <x-ui.table.head>Name</x-ui.table.head>
-                <x-ui.table.head></x-ui.table.head>
+                <x-ui.table.head>Created At</x-ui.table.head>
+                <x-ui.table.head>Published</x-ui.table.head>
             </x-ui.table.columns>
         </x-ui.table.header>
 
@@ -47,6 +48,7 @@ new class extends Component
                 <x-ui.table.cell>{{ $record->id }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->name }}</x-ui.table.cell>
                 <x-ui.table.cell>{{ $record->created_at->format('d/m/Y H:i') }}</x-ui.table.cell>
+                <x-ui.table.cell class="text-center">{{ $record->published_at?'✅':'⛔' }}</x-ui.table.cell>
                 <x-ui.table.cell>
                     <div class="flex flex-row items-center justify-end gap-2">
                         @unless($record->published_at)

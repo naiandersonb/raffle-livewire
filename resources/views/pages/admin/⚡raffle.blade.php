@@ -13,5 +13,6 @@ new class extends Component
     <livewire:raffles.edit />
     <livewire:raffles.destroy />
     <livewire:raffles.publish />
+    <livewire:raffles.unpublish />
     <livewire:raffles.table />
 </div>

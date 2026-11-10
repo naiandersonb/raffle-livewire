@@ -24,13 +24,10 @@ new class extends Component
         $this->id = $id;
         $this->raffle = Raffle::findOrFail($id);
     }
-    public function close(int $id):void {
+    public function close():void {
         $this->dispatch('close-modal', id: 'publish-raffle');
         $this->reset();
     }
-
-
-
 };
 ?>
 
@@ -39,7 +36,7 @@ new class extends Component
         <p>Publishe this Raffle?</p>
 
         <div class="flex flex-row items-center gap-4">
-            <x-ui.button wire:loading.atts='disabled' class="w-full mt-6" wire:click='handle' variant="ghost">
+            <x-ui.button wire:loading.atts='disabled' class="w-full mt-6" wire:click='close' variant="ghost">
                 No, thank you!
             </x-ui.button>
 
