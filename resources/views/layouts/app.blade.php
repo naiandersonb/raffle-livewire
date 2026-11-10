@@ -13,6 +13,13 @@
 </head>
 
 <body>
+    @auth
+    <x-ui.navbar class="flex border border-gray-200 rounded-xl mt-4 mx-auto w-max flex-row items-center gap-4">
+        <x-ui.navbar.item icon="home" label="Paǵina inicial" href="/" />
+        <x-ui.navbar.item label="Logout" href="{{ route('logout') }}" />
+    </x-ui.navbar>
+    @endauth
+
     {{ $slot }}
 
     @livewireScripts

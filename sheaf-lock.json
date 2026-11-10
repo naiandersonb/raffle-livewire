@@ -4,7 +4,17 @@
     "internalDependencies": {
         "icon": [
             "input",
-            "button"
+            "button",
+            "error",
+            "badge",
+            "navbar"
+        ],
+        "button": [
+            "badge",
+            "navbar"
+        ],
+        "badge": [
+            "navbar"
         ]
     }
 }
