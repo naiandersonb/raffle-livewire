@@ -13,6 +13,11 @@ new class extends Component {
     public ?string $winner = null;
 
     #[Computed]
+    public function winners() {
+        $this->raffle->winners()->with('applicant')->get();
+    }
+
+    #[Computed]
     public function participants()
     {
         return $this->raffle?->applicants ?? collect();
@@ -46,9 +51,31 @@ new class extends Component {
         $this->success = true;
     }
 
-    public function getWinner()
+    public function getWinner(): void
     {
-        $winner = $this->raffle->applicants()->inRandomOrder()->first();
+        $this->authorize('drawWinner', $this->raffle);
+
+        if($this->raffle->applicants()->count() < 2) {
+            $this->addError('email', 'É necessário ter pelo menos 2 participantes para realizar o sorteio.');
+            return;
+        }
+
+        $winners = $this->raffle->winners()->pluck('applicant_id');
+
+        $winner = $this->raffle
+        ->applicants()
+        ->whereNotIn('id', $winners)
+        ->inRandomOrder()
+        ->first();
+
+        if(!$winner) {
+            // adicionar um erro ou alerta
+        }
+
+        $this->raffle->winners()->create([
+            'applicant_id' => $winner->id,
+        ]);
+
         $this->winner = $winner->email;
     }
 };
@@ -95,15 +122,21 @@ new class extends Component {
         </ul>
     </x-ui.card>
 
-    @if ($winner)
+    @if ($this->winners->count())
     <div>
-        <h1>The winner is: {{ $winner }}</h1>
+        @foreach ($this->winners as $winner)
+
+        @endforeach
+        <h1>The winner is: {{ $winner->applicant->email }}</h1>
     </div>
     @endif
 
+    @can('drawWinner', $raffle)
     <x-ui.button type="button" wire:click="getWinner" class="mt-4 w-full">
         Draw the winner
     </x-ui.button>
+    @endcan
+
     @endif
 
 

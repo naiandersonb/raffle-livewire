@@ -16,4 +16,9 @@ class RafflePolicy
 
         return filled($raffle->published_at);
     }
+
+    public function drawWinner(?User $user, Raffle $raffle): bool
+    {
+        return !!$user?->is_admin;
+    }
 }

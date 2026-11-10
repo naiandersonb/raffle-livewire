@@ -14,4 +14,9 @@ class Raffle extends Model
     {
         return $this->hasMany(Applicant::class);
     }
+
+    public function winners(): HasMany
+    {
+        return $this->hasMany(Winner::class);
+    }
 }
