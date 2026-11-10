@@ -36,7 +36,7 @@ new class extends Component
 ?>
 
 <div>
-    <x-ui.modal id="unpublish-raffle" heading="Publish Raffle">
+    <x-ui.modal id="unpublish-raffle" heading="Publish Raffle" display-classes="contents">
         <p>Unpublishe this Raffle?</p>
 
         <div class="flex flex-row items-center gap-4">

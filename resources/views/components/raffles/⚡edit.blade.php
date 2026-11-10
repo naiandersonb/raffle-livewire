@@ -45,7 +45,7 @@ new class extends Component
 ?>
 
 <div>
-    <x-ui.modal id="edit-raffle" heading="Create new Raffle">
+    <x-ui.modal id="edit-raffle" heading="Create new Raffle" display-classes="contents">
         <form class="space-y-4" wire:submit='handle'>
             <x-ui.field>
                 <x-ui.label>Name</x-ui.label>

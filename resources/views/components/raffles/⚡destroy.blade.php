@@ -32,7 +32,7 @@ new class extends Component
 ?>
 
 <div>
-    <x-ui.modal id="destroy-raffle" heading="Delete Raffle">
+    <x-ui.modal id="destroy-raffle" heading="Delete Raffle" display-classes="contents">
         <p>Delete raffle <b>'{{$name}}'</b>?</p>
 
         <div class="flex flex-row items-center gap-4">
