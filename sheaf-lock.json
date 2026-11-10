@@ -1,20 +1,71 @@
 {
-    "files": [],
-    "helpers": [],
+    "files": {
+        "resources/js/components/select.js": [
+            "select"
+        ],
+        "Livewire/Concerns/WithPagination.php": [
+            "pagination",
+            "table"
+        ],
+        "Livewire/Concerns/CanExportCsv.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSelection.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithReordering.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSearch.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSorting.php": [
+            "table"
+        ],
+        "resources/js/globals/modals.js": [
+            "modal"
+        ],
+        "resources/js/utils.js": [
+            "modal"
+        ]
+    },
+    "helpers": {
+        "popup": [
+            "select"
+        ]
+    },
     "internalDependencies": {
         "icon": [
             "input",
             "button",
             "error",
             "badge",
-            "navbar"
+            "navbar",
+            "select",
+            "pagination",
+            "dropdown",
+            "table"
         ],
         "button": [
             "badge",
-            "navbar"
+            "navbar",
+            "pagination",
+            "table"
         ],
         "badge": [
             "navbar"
+        ],
+        "text": [
+            "select"
+        ],
+        "select": [
+            "pagination"
+        ],
+        "pagination": [
+            "table"
+        ],
+        "dropdown": [
+            "table"
         ]
     }
 }

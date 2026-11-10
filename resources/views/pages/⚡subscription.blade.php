@@ -54,7 +54,7 @@ new class extends Component {
 };
 ?>
 
-<div class="p-5 mx-auto max-w-xl">
+<div>
     <div>
         <h1 class="text-2xl font-bold mb-4">
             Raffle App :: {{ $raffle->name }}
@@ -64,9 +64,9 @@ new class extends Component {
     <form wire:submit="save" class="flex flex-col gap-4">
         <x-ui.input wire:model="email" placeholder="Enter your name..." />
         @error('email')
-            <div class="text-red-500 text-sm">
-                {{ $message }}
-            </div>
+        <div class="text-red-500 text-sm">
+            {{ $message }}
+        </div>
         @enderror
 
         <x-ui.button type="submit">
@@ -77,29 +77,33 @@ new class extends Component {
 
     <br />
 
+
+    @if(count($this->participants) > 0)
     <x-ui.card class="w-full" size='xl'>
-        <p class="flex items-center justify-between mb-4" level="h3" size="sm">
+        <p class="flex font-bold items-center justify-between mb-4" level="h3" size="sm">
             Participantes
 
         </p>
         <ul class="w-full">
             @foreach ($this->participants as $participant)
-                <li class="not-last:border-b border-b-gray-200 py-2">
-                    {{ $participant->email }}
-                </li>
+            <li class="not-last:border-b border-b-gray-200 py-2">
+                {{ $participant->email }}
+            </li>
             @endforeach
         </ul>
     </x-ui.card>
 
     @if ($winner)
-        <div>
-            <h1>The winner is: {{ $winner }}</h1>
-        </div>
+    <div>
+        <h1>The winner is: {{ $winner }}</h1>
+    </div>
     @endif
 
     <x-ui.button type="button" wire:click="getWinner" class="mt-4 w-full">
         Draw the winner
     </x-ui.button>
+    @endif
+
 
 
 

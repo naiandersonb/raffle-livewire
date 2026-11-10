@@ -30,6 +30,27 @@
         },
         "badge": {
             "installationTime": 1794254510
+        },
+        "table": {
+            "installationTime": 1794316674
+        },
+        "pagination": {
+            "installationTime": 1794316696
+        },
+        "select": {
+            "installationTime": 1794316698
+        },
+        "popup": {
+            "installationTime": 1794316698
+        },
+        "text": {
+            "installationTime": 1794316700
+        },
+        "dropdown": {
+            "installationTime": 1794316701
+        },
+        "modal": {
+            "installationTime": 1794318148
         }
     }
 }

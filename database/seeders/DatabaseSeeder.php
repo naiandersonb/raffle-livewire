@@ -16,10 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Raffle::factory(5)->create();
+        Raffle::factory(30)->create();
 
         User::factory()->create([
-            'email' => 'joe@doe.com'
+            'name' => 'Joe Doe',
+            'email' => 'joe@doe.com',
+            'is_admin' => true,
+        ]);
+
+        User::factory()->create([
+            'name' => 'Jane Doe',
+            'email' => 'jane@doe.com',
+            'is_admin' => false,
         ]);
     }
 }

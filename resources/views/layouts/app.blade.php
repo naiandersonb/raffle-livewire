@@ -12,15 +12,21 @@
     @livewireStyles
 </head>
 
-<body>
+<body x-data>
     @auth
     <x-ui.navbar class="flex border border-gray-200 rounded-xl mt-4 mx-auto w-max flex-row items-center gap-4">
-        <x-ui.navbar.item icon="home" label="Paǵina inicial" href="/" />
+        <x-ui.navbar.item label="Home" href="/" />
+        @can('admin')
+        <x-ui.navbar.item label="Raffles" href="{{ route('admin.raffle') }}" />
+        @endcan
         <x-ui.navbar.item label="Logout" href="{{ route('logout') }}" />
     </x-ui.navbar>
     @endauth
 
-    {{ $slot }}
+    <main class="p-5 mt-10 mx-auto max-w-xl">
+        {{ $slot }}
+    </main>
+
 
     @livewireScripts
 </body>
